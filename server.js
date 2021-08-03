@@ -12,7 +12,7 @@ mongoose.connect(MONGO_DB_URL, {
 
 const io = require("socket.io")(3001, {
   cors: {
-    origin: ["*"],
+    origin: FRONT_URL,
     methods: ["GET", "POST"],
   },
 });
