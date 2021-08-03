@@ -14,10 +14,9 @@ const io = require("socket.io")(3001, {
   cors: {
     origin: FRONT_URL,
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
-
-io.set("transports", ["websockets"]);
 
 io.on("connection", (socket) => {
   console.log("Connected");
