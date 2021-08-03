@@ -17,6 +17,8 @@ const io = require("socket.io")(3001, {
   },
 });
 
+io.set("transports", ["websockets"]);
+
 io.on("connection", (socket) => {
   console.log("Connected");
   socket.on("get-document", async (documentId) => {
