@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Document = require("./Document");
-
-mongoose.connect("mongodb://localhost/gdoc", {
+require("dotenv").config();
+const MONGO_DB_URL = process.env.MONGO_DB_URL || "mongodb://localhost/gdoc";
+const FRONT_URL = process.env.FRONT_URL || "http://localhost:3000";
+mongoose.connect(MONGO_DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -10,7 +12,7 @@ mongoose.connect("mongodb://localhost/gdoc", {
 
 const io = require("socket.io")(3001, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: FRONT_URL,
     methods: ["GET", "POST"],
   },
 });
